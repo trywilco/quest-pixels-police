@@ -9,7 +9,7 @@ startFlow:
       params:
         person: keen
         messages:
-          - text: "Hiya I'm the new Product Designer, so don’t know if you were updated, but there’s a design favor I need from you. We need to update the design for one of the cards in the marketplace. Can you take a look?  Here’s the link for the [design](https://www.figma.com/file/FImUX4qD76LVojt2txU2Xg/Untitled?node-id=1%3A3)"
+          - text: "Hiya I'm the new Product Designer, so don’t know if you were updated, but there’s a design favor I need from you. We need to update the design for the cards in the marketplace. Can you take a look?  Here’s the link for the [design](https://www.figma.com/file/FImUX4qD76LVojt2txU2Xg/Untitled?node-id=1%3A3)"
             delay: 1500
           - text: "Once you’ve taken a look and understood the new design components, you need to update the current design according to what Chelsea designed in Figma."
             delay: 1500
