@@ -13,7 +13,7 @@ skills:
 - CSS
 - Figma
 - Communication
-questDependency: docker_localsetup
+questDependency: dataseeding
 messages:
   questStarted:
     person: keen
