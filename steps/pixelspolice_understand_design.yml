@@ -50,3 +50,4 @@ trigger:
             messages:
             - text: Great, let me know when the PR is ready.
               delay: 2500
+        - actionId: finish_step
