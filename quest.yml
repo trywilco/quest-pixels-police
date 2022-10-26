@@ -2,6 +2,7 @@ id: pixel_police
 title: Pixels Police
 description: "Implementing a new design"
 summary: "A common frontend feature task is to design a feature according to a given specific design. In this quest that user will be asked to implement a specific UI component, according to a given design (figma link). The user will be able to pass the quest only if their component actually meets the design specifications."
+slogan: "Cool. Cool. Cool. Cool."
 level: beginner
 steps:
 - pixelspolice_implement_design
