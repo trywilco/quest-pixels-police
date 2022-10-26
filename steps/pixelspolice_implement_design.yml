@@ -1,16 +1,21 @@
-id: implement_design
-leariningObjectives:
-- Implementing a Figma design from Scratch with React
+id: search_empty
+learningObjectives:
+  - Implementing a Figma design from Scratch with React
 hints:
-- Ok, let me see if i can help, did you update the ItemPreview.js based on the new design?
+  - Open dev tools and try to play with the CSS attributes.
 startFlow:
   do:
-  - actionId: bot_message
-    params:
-      person: keen
-      messages:
-      - text: Ok, so now that you've understood the design and have finished implemnting the design, let's check
-        delay: 2000
+    - actionId: bot_message
+      params:
+        person: keen
+        messages:
+          - text: "Hiya i'm the new Product Designer, so don’t know if you were updated, but there’s a design favor I need from you. We need to update the design for one of the cards in the marketplace. Can you take a look?  Here’s the link for the [design](https://figma.com)"
+            delay: 1500
+          - text: "Once you’ve taken a look and understood the new design components, you need to update the current design according to what Chelsea designed in Figma."
+            delay: 3500
+          - text: And as usual, when ready, open a PR.
+            delay: 1200
+
 trigger:
   type: github_pr_lifecycle_status
   flowNode:
@@ -19,46 +24,51 @@ trigger:
       cases:
         github_pr_opened:
           do:
-          - actionId: bot_message
-            params:
-              person: keen
-              messages:
-              - text: "On it, I'll review the PR right away"
-                delay: 1000
-          - actionId: github_pr_comment
-            params:
-              person: keen
-              message: "On it, I'll review the PR right away"
+            - actionId: github_pr_comment
+              params:
+                person: keen
+                message: Got it, will review in a sec’
+
+            - actionId: bot_message
+              params:
+                person: keen
+                messages:
+                  - text: Got it, will review in a sec’
+                    delay: 300
         github_pr_workflow_complete_success:
           do:
-          - actionId: bot_message
-            params:
-              person: keen
-              messages:
-              - text: "Awesome, Great job, let's move onto the next phase of the task"
-                delay: 2000
-          - actionId: github_pr_approve
-            params:
-              person: keen
-              messages:
-              - text: "Great job @${user.githubuser}! You can now merge the PR."
-                delay: 300
+            - actionId: github_pr_approve
+              params:
+                person: keen
+                message: Approved! Awesome job 😀
+
+            - actionId: bot_message
+              params:
+                person: keen
+                messages:
+                  - text: Approved! Awesome job 😀 Go ahead and merge it.
+                    delay: 300
         github_pr_workflow_complete_failure:
           do:
-          - actionId: bot_message
-            params:
-              person: keen
-              messages:
-              - text: "something looks wrong, your code is failing the checks. Can you try again?"
-                delay: 3000
-          - actionId: github_pr_reject
-            params:
-              person: keen
-              message: "Looks like your code didn’t update the design properly. Can you take a second look?"
+            - actionId: github_pr_reject
+              params:
+                person: keen
+                message: Let’s try this again, shall we?
+
+            - actionId: bot_message
+              params:
+                person: keen
+                messages:
+                  - text: Let’s try this again, shall we?
+                    delay: 300
         github_pr_merged:
           do:
-          - actionId: finish_step
+            - actionId: finish_step
+
 githubActions:
+  backend:
   frontend:
-    capabilities: []
-    testFile: "design.test.js"
+    capabilities:
+      - jest-puppeteer
+      - "puppeteer@18.1.0"
+    testFile: "implement_design.test.js"
