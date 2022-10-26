@@ -24,22 +24,21 @@ trigger:
         params:
           text: "${userMessageText}"
           strings:
-          - - ready
-          - - done
+          - - don't
+          - - understand
       then:
         do:
         - actionId: bot_message
           params:
             person: keen
             messages:
-            - text: Good catch! I'll let the support team know.
+            - text: Please Open the figma link and look at the updated design.
               delay: 1300
-        - actionId: finish_step
       else:
         do:
         - actionId: bot_message
           params:
             person: keen
             messages:
-            - text: Try again! I'm sure you'll figure this out.
+            - text: Great, let me know when the PR is ready.
               delay: 2500
