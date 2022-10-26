@@ -6,13 +6,13 @@ slogan: "Cool. Cool. Cool. Cool."
 level: beginner
 steps:
 - pixelspolice_implement_design
-- pixelsplice_implement_mobile_responsiveness
+- pixelspolice_implement_mobile_responsiveness
 duration: 3
 skills:
 - frontend
 - CSS
 - Figma
-- communication
+- Communication
 questDependency: docker_localsetup
 messages:
   questStarted:
