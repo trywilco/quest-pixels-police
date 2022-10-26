@@ -1,0 +1,64 @@
+id: implement_design
+leariningObjectives:
+- Implementing a Figma design from Scratch with React
+hints:
+- Ok, let me see if i can help, did you update the ItemPreview.js based on the new design?
+startFlow:
+  do:
+  - actionId: bot_message
+    params:
+      person: keen
+      messages:
+      - text: Ok, so now that you've understood the design and have finished implemnting the design, let's check
+        delay: 2000
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    switch:
+      key: ${eventType}
+      cases:
+        github_pr_opened:
+          do:
+          - actionId: bot_message
+            params:
+              person: keen
+              messages:
+              - text: "On it, I'll review the PR right away"
+                delay: 1000
+          - actionId: github_pr_comment
+            params:
+              person: keen
+              message: "On it, I'll review the PR right away"
+        github_pr_workflow_complete_success:
+          do:
+          - actionId: bot_message
+            params:
+              person: keen
+              messages:
+              - text: "Awesome, Great job, let's move onto the next phase of the task"
+                delay: 2000
+          - actionId: github_pr_approve
+            params:
+              person: keen
+              messages:
+              - text: "Great job @${user.githubuser}! You can now merge the PR."
+                delay: 300
+        github_pr_workflow_complete_failure:
+          do:
+          - actionId: bot_message
+            params:
+              person: keen
+              messages:
+              - text: "something looks wrong, your code is failing the checks. Can you try again?"
+                delay: 3000
+          - actionId: github_pr_reject
+            params:
+              person: keen
+              message: "Looks like your code didn’t update the design properly. Can you take a second look?"
+        github_pr_merged:
+          do:
+          - actionId: finish_step
+githubActions:
+  frontend:
+    capabilities: []
+    testFile: "design.test.js"
