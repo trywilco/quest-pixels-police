@@ -34,7 +34,15 @@ trigger:
             messages:
             - text: Please Open the figma link and look at the updated design.
               delay: 1300
-      else:
+      if:
+       conditions:
+       - conditionId: text_contains_strings
+        params:
+          text: "${userMessageText}"
+          strings:
+          - - ready
+          - - understood
+      then:
         do:
         - actionId: bot_message
           params:
