@@ -1,8 +1,8 @@
-# quest-template
+# quest-pixels-police
 
 ## Quest Details 
-#### title: 
-#### level: 
+#### title: Pixels Police
+#### level: Intermediate
 #### skills:
 #### dependencies: 
 
