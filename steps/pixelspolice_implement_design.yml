@@ -1,4 +1,4 @@
-id: search_empty
+id: implement_design
 learningObjectives:
   - Implementing a Figma design from Scratch with React
 hints:
@@ -9,10 +9,10 @@ startFlow:
       params:
         person: keen
         messages:
-          - text: "Hiya i'm the new Product Designer, so don’t know if you were updated, but there’s a design favor I need from you. We need to update the design for one of the cards in the marketplace. Can you take a look?  Here’s the link for the [design](https://figma.com)"
+          - text: "Hiya I'm the new Product Designer, so don’t know if you were updated, but there’s a design favor I need from you. We need to update the design for one of the cards in the marketplace. Can you take a look?  Here’s the link for the [design](https://www.figma.com/file/FImUX4qD76LVojt2txU2Xg/Untitled?node-id=1%3A3)"
             delay: 1500
           - text: "Once you’ve taken a look and understood the new design components, you need to update the current design according to what Chelsea designed in Figma."
-            delay: 3500
+            delay: 1500
           - text: And as usual, when ready, open a PR.
             delay: 1200
 
@@ -40,26 +40,26 @@ trigger:
             - actionId: github_pr_approve
               params:
                 person: keen
-                message: Approved! Awesome job 😀
+                message: Approved! Awesome job 😀 Go ahead and merge it.
 
             - actionId: bot_message
               params:
                 person: keen
                 messages:
-                  - text: Approved! Awesome job 😀 Go ahead and merge it.
+                  - text: Approved! Awesome job 😀.
                     delay: 300
         github_pr_workflow_complete_failure:
           do:
             - actionId: github_pr_reject
               params:
                 person: keen
-                message: Let’s try this again, shall we?
+                message: The check on the PR failed, can you investigate what happened and try again?
 
             - actionId: bot_message
               params:
                 person: keen
                 messages:
-                  - text: Let’s try this again, shall we?
+                  - text: The check on the PR failed, can you investiagte what happened and try again?
                     delay: 300
         github_pr_merged:
           do:

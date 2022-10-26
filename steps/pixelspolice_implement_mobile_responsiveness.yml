@@ -1,4 +1,4 @@
-id: search_empty
+id: mobile_responsiveness
 learningObjectives:
   - Mobile responsiveness
 hints:
@@ -9,11 +9,11 @@ startFlow:
       params:
         person: keen
         messages:
-          - text: "Oh no it's not working well on mobile!"
+          - text: "Oh snap it's not working well on mobile"
             delay: 1500
-          - text: "Fix it please."
-            delay: 3500
-          - text: And as usual, when ready, open a PR.
+          - text: "can you please take a look?"
+            delay: 1500
+          - text: Don't forget to open a PR so that I'll know when you are done.
             delay: 1200
 
 trigger:
@@ -40,29 +40,35 @@ trigger:
             - actionId: github_pr_approve
               params:
                 person: keen
-                message: Approved! Awesome job 😀
+                message: Approved! Awesome job 😀 Go ahead and merge it.
 
             - actionId: bot_message
               params:
                 person: keen
                 messages:
-                  - text: Approved! Awesome job 😀 Go ahead and merge it.
+                  - text: Oh wow, it looks great 😀.
                     delay: 300
         github_pr_workflow_complete_failure:
           do:
             - actionId: github_pr_reject
               params:
                 person: keen
-                message: Let’s try this again, shall we?
+                message: The check on the PR failed, can you investigate what happened and try again?
 
             - actionId: bot_message
               params:
                 person: keen
                 messages:
-                  - text: Let’s try this again, shall we?
+                  - text: The check on the PR failed, can you investiagte what happened and try again?
                     delay: 300
         github_pr_merged:
           do:
+            - actionId: bot_message
+              params:
+                person:
+                messages:
+                  - text: Nice job, thank you for helping out
+                    delay: 2000
             - actionId: finish_step
 
 githubActions:
@@ -71,4 +77,4 @@ githubActions:
     capabilities:
       - jest-puppeteer
       - "puppeteer@18.1.0"
-    testFile: "implement_design.test.js"
+    testFile: "responsiveness.test.js"
